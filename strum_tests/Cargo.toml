@@ -5,8 +5,8 @@ edition = "2018"
 authors = ["Peter Glotfelty <peglotfe@microsoft.com>"]
 
 [dependencies]
-strum = { path = "../strum", features = ["derive"] }
-strum_macros = { path = "../strum_macros", features = [] }
+sea-strum = { path = "../strum", features = ["derive"] }
+sea-strum_macros = { path = "../strum_macros", features = [] }
 clap = "=2.33.0"
 enum_variant_type = "=0.2.0"
 structopt = "0.2.18"

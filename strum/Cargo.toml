@@ -1,5 +1,5 @@
 [package]
-name = "strum"
+name = "sea-strum"
 version = "0.24.0"
 edition = "2018"
 authors = ["Peter Glotfelty <peter.glotfelty@microsoft.com>"]
@@ -9,24 +9,29 @@ description = "Helpful macros for working with enums and strings"
 keywords = ["enum", "string", "macros", "proc-macros"]
 categories = ["development-tools::procedural-macro-helpers", "parsing"]
 
-documentation = "https://docs.rs/strum"
-homepage = "https://github.com/Peternator7/strum"
-repository = "https://github.com/Peternator7/strum"
+documentation = "https://docs.rs/sea-strum"
+homepage = "https://github.com/SeaQL/strum"
+repository = "https://github.com/SeaQL/strum"
 readme = "../README.md"
 
+[lib]
+name = "strum"
+path = "src/lib.rs"
+
 [dependencies]
-strum_macros = { path = "../strum_macros", optional = true, version = "0.24" }
+sea-strum_macros = { path = "../strum_macros", optional = true, version = "0.24" }
 
 [dev-dependencies]
-strum_macros = { path = "../strum_macros", version = "0.24" }
+sea-strum_macros = { path = "../strum_macros", version = "0.24" }
 
 [badges]
 travis-ci = { repository = "Peternator7/strum" }
 
 [features]
 default = ["std"]
-derive = ["strum_macros"]
+derive = ["sea-strum_macros"]
 std = []
+sea-orm = ["sea-strum_macros/sea-orm"]
 
 [package.metadata.docs.rs]
 features = ["derive"]
