@@ -1,5 +1,5 @@
 [package]
-name = "strum_macros"
+name = "sea-strum_macros"
 version = "0.24.3"
 edition = "2018"
 authors = ["Peter Glotfelty <peter.glotfelty@microsoft.com>"]
