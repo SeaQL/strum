@@ -6,7 +6,7 @@ authors = ["Peter Glotfelty <peglotfe@microsoft.com>"]
 
 [features]
 default = []
-test_phf = ["strum/phf"]
+test_phf = ["sea-strum/phf"]
 
 [dependencies]
 sea-strum = { path = "../strum", features = ["derive"] }
