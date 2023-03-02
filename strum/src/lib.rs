@@ -11,16 +11,16 @@
 //!
 //! # Including Strum in Your Project
 //!
-//! Import strum and strum_macros into your project by adding the following lines to your
-//! Cargo.toml. Strum_macros contains the macros needed to derive all the traits in Strum.
+//! Import strum and `strum_macros` into your project by adding the following lines to your
+//! Cargo.toml. `strum_macros` contains the macros needed to derive all the traits in Strum.
 //!
 //! ```toml
 //! [dependencies]
-//! strum = "0.23"
-//! strum_macros = "0.23"
+//! strum = "0.24"
+//! strum_macros = "0.24"
 //!
 //! # You can also access strum_macros exports directly through strum using the "derive" feature
-//! strum = { version = "0.23", features = ["derive"] }
+//! strum = { version = "0.24", features = ["derive"] }
 //! ```
 //!
 
@@ -30,7 +30,11 @@
 // only for documentation purposes
 pub mod additional_attributes;
 
-/// The ParseError enum is a collection of all the possible reasons
+#[cfg(feature = "phf")]
+#[doc(hidden)]
+pub use phf as _private_phf_reexport_for_macro_if_phf_feature;
+
+/// The `ParseError` enum is a collection of all the possible reasons
 /// an enum can fail to parse from a string.
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Hash)]
 pub enum ParseError {
@@ -99,7 +103,7 @@ pub trait IntoEnumIterator: Sized {
 
 /// Associates additional pieces of information with an Enum. This can be
 /// autoimplemented by deriving `EnumMessage` and annotating your variants with
-/// `#[strum(message="...")].
+/// `#[strum(message="...")]`.
 ///
 /// # Example
 ///
@@ -113,6 +117,7 @@ pub trait IntoEnumIterator: Sized {
 ///     #[strum(message="I have a dog")]
 ///     #[strum(detailed_message="My dog's name is Spots")]
 ///     Dog,
+///     /// I am documented.
 ///     #[strum(message="I don't have a cat")]
 ///     Cat,
 /// }
@@ -123,10 +128,13 @@ pub trait IntoEnumIterator: Sized {
 pub trait EnumMessage {
     fn get_message(&self) -> Option<&'static str>;
     fn get_detailed_message(&self) -> Option<&'static str>;
+
+    /// Get the doc comment associated with a variant if it exists.
+    fn get_documentation(&self) -> Option<&'static str>;
     fn get_serializations(&self) -> &'static [&'static str];
 }
 
-/// EnumProperty is a trait that makes it possible to store additional information
+/// `EnumProperty` is a trait that makes it possible to store additional information
 /// with enum variants. This trait is designed to be used with the macro of the same
 /// name in the `strum_macros` crate. Currently, the only string literals are supported
 /// in attributes, the other methods will be implemented as additional attribute types

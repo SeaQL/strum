@@ -66,7 +66,7 @@
 //!    The generated code will now return the variant with the input string captured as shown below
 //!    instead of failing.
 //!
-//!     ```rust,ignore
+//!     ```text
 //!     // Replaces this:
 //!     _ => Err(strum::ParseError::VariantNotFound)
 //!     // With this in generated code:
@@ -83,9 +83,11 @@
 //!
 //! - `message=".."`: Adds a message to enum variant. This is used in conjunction with the `EnumMessage`
 //!    trait to associate a message with a variant. If `detailed_message` is not provided,
-//!    then `message` will also be returned when get_detailed_message() is called.
+//!    then `message` will also be returned when `get_detailed_message` is called.
 //!
 //! - `detailed_message=".."`: Adds a more detailed message to a variant. If this value is omitted, then
 //!    `message` will be used in it's place.
+//!
+//! - Structured documentation, as in `/// ...`: If using `EnumMessage`, is accessible via get_documentation().
 //!
 //! - `props(key="value")`: Enables associating additional information with a given variant.

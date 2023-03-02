@@ -1,6 +1,6 @@
 [package]
 name = "sea-strum"
-version = "0.23.0"
+version = "0.24.1"
 edition = "2018"
 authors = ["Peter Glotfelty <peter.glotfelty@microsoft.com>"]
 license = "MIT"
@@ -19,10 +19,11 @@ name = "strum"
 path = "src/lib.rs"
 
 [dependencies]
-sea-strum_macros = { path = "../strum_macros", optional = true, version = "0.23" }
+sea-strum_macros = { path = "../strum_macros", optional = true, version = "0.24" }
+phf = { version = "0.10", features = ["macros"], optional = true }
 
 [dev-dependencies]
-sea-strum_macros = { path = "../strum_macros", version = "0.23" }
+sea-strum_macros = { path = "../strum_macros", version = "0.24" }
 
 [badges]
 travis-ci = { repository = "Peternator7/strum" }
